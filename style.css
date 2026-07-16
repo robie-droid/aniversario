@@ -1,0 +1,442 @@
+/* --- CONFIGURACIONES GENERALES --- */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6f2; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Permite hacer scroll si el contenido es largo */
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    padding: 20px 0;
+}
+/* --- FONDO ANIMADO DE CORAZONES --- */
+#fondo-corazones {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Esto asegura que el fondo quede detrás de absolutamente todo */
+    overflow: hidden;
+    pointer-events: none; /* Evita que los corazones estorben cuando quieras dar clic a algo */
+}
+
+.corazon-flotante {
+    position: absolute;
+    bottom: -10vh; /* Empiezan escondidos debajo de la pantalla */
+    animation: flotar linear forwards; /* Animación recta hacia arriba */
+    opacity: 0.7; /* Ligeramente transparentes */
+}
+
+/* El recorrido que harán de abajo hacia arriba */
+@keyframes flotar {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0; /* Se desvanecen al llegar arriba */
+    }
+}
+.oculto {
+    display: none !important;
+}
+
+/* --- ESTILOS DEL CANDADO (DISEÑO DE CANDADO REAL) --- */
+#pantalla-candado {
+    padding-top: 80px; /* Da espacio para el arco superior del candado */
+}
+
+.candado-container {
+    /* Cuerpo del candado */
+    background: linear-gradient(145deg, #ff66b3, #ff3399); /* Rosa metálico */
+    width: 280px;
+    padding: 35px 20px 45px 20px;
+    border-radius: 15px 15px 35px 35px; /* Más curvo abajo, como un candado real */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2), inset 0 5px 15px rgba(255,255,255,0.3);
+    position: relative;
+    margin: 0 auto;
+}
+
+/* El arco plateado superior del candado */
+.candado-container::before {
+    content: '';
+    position: absolute;
+    top: -70px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 80px;
+    border: 22px solid #d9d9d9; /* Color plata/acero */
+    border-bottom: none;
+    border-radius: 70px 70px 0 0; 
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.3);
+    z-index: -1; /* Lo manda detrás del cuerpo rosa */
+}
+
+/* El "agujero" de la llave decorativo en la base */
+.candado-container::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 7px);
+    width: 14px;
+    height: 14px;
+    background: #99004d; /* Rosa muy oscuro (sombra) */
+    border-radius: 50%;
+    box-shadow: 0 8px 0 0 #99004d; /* Efecto alargado de cerradura clásica */
+}
+
+.candado-container h2 {
+    color: white;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* La ranura oscura donde giran las ruedas numéricas */
+.controles {
+    background: #2a2a2a; 
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre cada rueda */
+    box-shadow: inset 0 8px 15px rgba(0,0,0,0.8); 
+    margin-bottom: 20px;
+}
+
+/* Columna de cada rueda */
+.rueda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botones de girar (Triángulos) */
+.btn-girar {
+    background: none !important;
+    border: none !important;
+    color: #888 !important;
+    font-size: 14px !important;
+    padding: 5px !important;
+    margin: 0 !important;
+    cursor: pointer;
+    box-shadow: none !important;
+    width: auto !important;
+}
+
+.btn-girar:hover {
+    color: #ffb3d9 !important;
+    transform: none !important;
+}
+
+/* Rueditas de combinación metálicas */
+.controles input {
+    width: 45px;
+    padding: 10px 0;
+    margin: 5px 0;
+    text-align: center;
+    background: linear-gradient(180deg, #b3b3b3 0%, #ffffff 50%, #b3b3b3 100%);
+    border: 1px solid #1a1a1a;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    appearance: textfield;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* Ocultamos las flechas nativas feas */
+.controles input::-webkit-outer-spin-button,
+.controles input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Rueditas de combinación metálicas */
+.controles input {
+    width: 40px;
+    padding: 10px 5px;
+    margin: 0 5px;
+    text-align: center;
+    /* Degradado para dar ilusión de cilindro giratorio */
+    background: linear-gradient(180deg, #b3b3b3 0%, #ffffff 50%, #b3b3b3 100%);
+    border: 1px solid #1a1a1a;
+    border-radius: 3px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    /* Ocultamos las flechas por defecto del navegador */
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* Código extra para ocultar las flechas en Chrome/Safari */
+.controles input::-webkit-outer-spin-button,
+.controles input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Botón de desbloqueo integrado */
+.candado-container button {
+    background-color: white;
+    color: #ff3399;
+    border: none;
+    padding: 12px 0;
+    width: 80%;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.2s;
+    position: relative;
+    z-index: 2; /* Asegura que el botón se pueda clickear por encima del adorno */
+}
+
+.candado-container button:hover {
+    transform: scale(1.05);
+    background-color: #ffe6f2;
+}
+
+#mensaje-error {
+    color: white;
+    background-color: rgba(255, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 15px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+/* --- TÍTULO PRINCIPAL --- */
+.titulo-principal {
+    color: #ff3399;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- ESTILOS DEL CARRUSEL 3D --- */
+.carrusel-3d-contenedor {
+    perspective: 1000px; 
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    position: relative;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carrusel-3d {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 330px;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.tarjeta-3d {
+    position: absolute;
+    width: 220px;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(255, 102, 179, 0.4);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    user-select: none;
+    opacity: 0;
+    transform: translate3d(0, 0, -500px) rotateY(0deg); 
+}
+
+.tarjeta-3d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estados 3D */
+.tarjeta-3d.activa {
+    opacity: 1;
+    transform: translate3d(0, 0, 100px) rotateY(0deg); 
+    z-index: 10;
+}
+
+.tarjeta-3d.izquierda {
+    opacity: 0.7;
+    transform: translate3d(-150px, 0, -150px) rotateY(45deg); 
+    z-index: 5;
+}
+
+.tarjeta-3d.derecha {
+    opacity: 0.7;
+    transform: translate3d(150px, 0, -150px) rotateY(-45deg); 
+    z-index: 5;
+}
+
+.carrusel-controles {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.carrusel-controles button {
+    background: #ff66b3;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrusel-controles button:hover {
+    transform: scale(1.1);
+}
+
+/* --- ESTILOS DEL CONTADOR DE TIEMPO --- */
+.titulo-contador {
+    color: #ff3399;
+    margin-top: 40px;
+    font-size: 24px;
+}
+
+.contador-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.caja-tiempo {
+    background-color: white;
+    padding: 15px 5px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 102, 179, 0.2);
+}
+
+.caja-tiempo span {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff66b3;
+    display: block;
+}
+
+.caja-tiempo p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: #ff99cc;
+    font-weight: bold;
+}
+
+/* --- ESTILOS DEL SOBRE Y LA CARTA --- */
+.contenedor-sobre {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.titulo-carta {
+    color: #ff3399;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.btn-sobre {
+    background-color: white;
+    font-size: 60px; 
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 20px;
+    box-shadow: 0 8px 15px rgba(255, 102, 179, 0.3);
+    transition: transform 0.3s;
+}
+
+.btn-sobre:hover {
+    transform: scale(1.1) rotate(5deg); 
+}
+
+/* Ventana Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 204, 229, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    backdrop-filter: blur(5px); 
+}
+
+.contenido-carta {
+    background: white;
+    width: 85%;
+    max-width: 400px;
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    position: relative;
+    text-align: center;
+    line-height: 1.6;
+    color: #333;
+}
+
+.contenido-carta h3 {
+    color: #ff3399;
+    margin-top: 0;
+}
+
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #ff66b3;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* --- RECUADRO SEMI-TRANSPARENTE --- */
+.contenedor-principal-transparente {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 20px;
+    margin: 0 auto; /* Eliminamos el margen superior para que suba */
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+    /* ESTO ES LO QUE HACE QUE EL CONTENIDO QUEDE DENTRO */
+    position: relative; 
+    z-index: 1;
+}

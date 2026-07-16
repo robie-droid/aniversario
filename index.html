@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Aniversario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- FONDO ANIMADO DE CORAZONES -->
+    <div id="fondo-corazones"></div>
+
+    <!-- SECCIÓN 1: EL CANDADO -->
+    <section id="pantalla-candado">
+        <div class="candado-container">
+            <h2>Ingresa la fecha correcta...</h2>
+            <div class="controles">
+                <!-- Rueda del Día -->
+                <div class="rueda">
+                    <button class="btn-girar arriba" data-target="dia">▲</button>
+                    <input type="number" id="dia" placeholder="DD" min="1" max="31" value="01">
+                    <button class="btn-girar abajo" data-target="dia">▼</button>
+                </div>
+                <!-- Rueda del Mes -->
+                <div class="rueda">
+                    <button class="btn-girar arriba" data-target="mes">▲</button>
+                    <input type="number" id="mes" placeholder="MM" min="1" max="12" value="01">
+                    <button class="btn-girar abajo" data-target="mes">▼</button>
+                </div>
+                <!-- Rueda del Año -->
+                <div class="rueda">
+                    <button class="btn-girar arriba" data-target="anio">▲</button>
+                    <input type="number" id="anio" placeholder="AA" min="0" max="99" value="01">
+                    <button class="btn-girar abajo" data-target="anio">▼</button>
+                </div>
+            </div>
+            <button id="btn-desbloquear">Desbloquear 💖</button>
+            <p id="mensaje-error" class="oculto">Fecha incorrecta, vuelve a intentarlo.</p>
+        </div>
+    </section>
+
+   <section id="pantalla-principal" class="oculto">
+        <h1 class="titulo-principal">Nuestros Recuerdos 💖</h1>
+        
+        <!-- NUEVO RECUADRO CONTENEDOR -->
+        <div class="contenedor-principal-transparente">
+            
+            <!-- Carrusel 3D -->
+            <div class="carrusel-3d-contenedor">
+                <!-- ... (tu código del carrusel sigue igual) ... -->
+            </div>
+
+            <!-- El Cronómetro del Amor -->
+            <h2 class="titulo-contador">Nuestro Tiempo Juntos</h2>
+            <div class="contador-grid">
+                <!-- ... (tu código del contador sigue igual) ... -->
+            </div>
+            
+        </div> <!-- Cierre del contenedor transparente -->
+
+        <!-- El Sobre de la Carta (esto puede quedar afuera si quieres) -->
+        <div class="contenedor-sobre">
+            <!-- ... -->
+        </div>
+        
+        <!-- Carrusel 3D -->
+        <div class="carrusel-3d-contenedor">
+            <div class="carrusel-3d" id="carrusel3D">
+                <!-- Asegúrate de poner el nombre exacto de tus fotos aquí -->
+                <div class="tarjeta-3d">
+                    <img src="mi foto.jpeg" alt="Foto 1">
+                </div>
+                <div class="tarjeta-3d">
+                    <img src="mi foto 2.jpeg" alt="Foto 2">
+                </div>
+                <div class="tarjeta-3d">
+                    <img src="mi foto 3.jpeg" alt="Foto 3">
+                </div>
+                <div class="tarjeta-3d">
+                    <img src="mi foto 4.jpeg" alt="Foto 4">
+                </div>
+            </div>
+            
+            <div class="carrusel-controles">
+                <button id="btn-prev">◀</button>
+                <button id="btn-next">▶</button>
+            </div>
+        </div>
+
+        <!-- El Cronómetro del Amor -->
+        <h2 class="titulo-contador">Nuestro Tiempo Juntos</h2>
+        <div class="contador-grid">
+            <div class="caja-tiempo">
+                <span id="anios">0</span>
+                <p>AÑOS</p>
+            </div>
+            <div class="caja-tiempo">
+                <span id="meses">0</span>
+                <p>MESES</p>
+            </div>
+            <div class="caja-tiempo">
+                <span id="dias">0</span>
+                <p>DÍAS</p>
+            </div>
+            <div class="caja-tiempo">
+                <span id="horas">0</span>
+                <p>HORAS</p>
+            </div>
+            <div class="caja-tiempo">
+                <span id="minutos">0</span>
+                <p>MINUTOS</p>
+            </div>
+            <div class="caja-tiempo">
+                <span id="segundos">0</span>
+                <p>SEGUNDOS</p>
+            </div>
+        </div>
+
+        <!-- El Sobre de la Carta -->
+        <div class="contenedor-sobre">
+            <h2 class="titulo-carta">Carta de Mi Corazón</h2>
+            <button id="btn-abrir-carta" class="btn-sobre">💌</button>
+        </div>
+
+        <!-- Ventana Emergente de la Carta -->
+        <div id="modal-carta" class="modal oculto">
+            <div class="contenido-carta">
+                <button id="btn-cerrar-carta" class="btn-cerrar">✖</button>
+                <h3>Para el amor de mi vida 💖</h3>
+                <p>
+                    Desde el día en que nuestros caminos se cruzaron, mi mundo entero cambió para mejor. Cada momento a tu lado se ha convertido en mi recuerdo favorito, y tu sonrisa es la paz que necesito al final de cualquier día.
+                </p>
+                <p>
+                    Gracias por ser mi refugio, mi motivación y mi persona favorita. No hay tiempo, distancia, ni código en el mundo capaz de medir todo lo que siento por ti. 
+                </p>
+                <p>
+                    Prometo seguir cuidándote, valorándote y eligiéndote hoy, mañana y todos los días de mi vida. Eres mi mejor coincidencia y mi más hermosa realidad. Te amo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

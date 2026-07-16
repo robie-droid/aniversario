@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(crearCorazon, 400);
 
     // --- 1. CONFIGURACIÓN DEL CANDADO ---
-    const diaSecreto = "01"; 
-    const mesSecreto = "01";
-    const anioSecreto = "01";
+    const diaSecreto = "16"; 
+    const mesSecreto = "07";
+    const anioSecreto = "20";
 
     // Conectamos los elementos
     const inputDia = document.getElementById('dia');
